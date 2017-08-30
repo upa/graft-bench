@@ -1,16 +1,16 @@
 ## iperf3 test for TCP throughput
 
 ### Test patterns
-- From/To Docker Container From/To Host via a physical link
- - via AF_GRAFT
- - via Docker NAT (docker0)
+- From/To Docker Container From/To Host through a physical link
+    - via AF_GRAFT
+    - via Docker NAT (docker0)
 
 - From Host to Host via a physical link
- - via normal linux network stack
+    - via normal linux network stack
 
-- From/To Docker Container From/To Host via a loopback interface
- - via AF_GRAFT
- - via Docker NAT (docker0)
+- From/To Docker Container From/To Host through a loopback interface
+    - via AF_GRAFT
+    - via Docker NAT (docker0)
 
 
 ### How to start test

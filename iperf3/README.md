@@ -14,6 +14,9 @@
 
 
 ### How to start test
+
+First, execut iperf3 server `iperf3 -s` on both hosts.
+
 ```shell-session
 $ cd graft-bench/iperf3
 $ cd docker

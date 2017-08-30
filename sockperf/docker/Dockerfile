@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
 	unzip	\
 	autoconf	\
 	g++		\
+	gcc		\
 	make		\
 	net-tools	\
 	bison		\
@@ -17,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 
 # setup sockperf
 RUN cd ${workdir}	\
-	&& wget https://github.com/Mellanox/sockperf/archive/sockperf_v2.zip	\
+	&& wget https://github.com/Mellanox/sockperf/archive/sockperf_v2.zip \
 	&& unzip sockperf_v2.zip	\
 	&& cd sockperf-sockperf_v2/	\
 	&& ./autogen.sh	\

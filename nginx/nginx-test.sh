@@ -9,7 +9,7 @@ conn=50
 reqnum=100000
 time=30s
 
-<<OUT
+for conn in 1 50; do
 for s in 64 256 1k 4k 16k 64k 256k 1m 4m 16m 64m; do
 for x in `seq -w 1 $trynum`; do
 	
@@ -23,8 +23,9 @@ for x in `seq -w 1 $trynum`; do
 	sleep 70
 done
 done
-OUT
+done
 
+<<OUT
 for conn in 1 50; do
 for s in 64 256 1k 4k 16k 64k 256k 1m 4m 16m 64m; do
 for x in `seq -w 1 $trynum`; do
@@ -40,3 +41,4 @@ for x in `seq -w 1 $trynum`; do
 done
 done
 done
+OUT

@@ -41,14 +41,14 @@ sudo ethtool -K $nic lro on
 
 for x in `seq -w 1 $trynum`; do
 	echo docker graft send test parallel "${p}", $x
-	docker_run "iperf3 -c graft:$dst -O 5 -t $duration -J" \
+	docker_run "iperf3 -c graft:$dst -O 5 -t $duration -P ${p} -J" \
 		> $outputdir/docker_graft_host_send_parallel-"${p}"_"${x}".txt
 done
 
 
 for x in `seq -w 1 $trynum`; do
 	echo docker graft recv test parallel "${p}", $x
-	docker_run "iperf3 -c graft:$dst -O 5 -t $duration -R -J" \
+	docker_run "iperf3 -c graft:$dst -O 5 -t $duration -P ${p} -R -J" \
 		> $outputdir/docker_graft_host_recv_parallel-"${p}"_"${x}".txt
 done
 
@@ -61,14 +61,15 @@ sudo ethtool -K $nic lro off
 
 for x in `seq -w 1 $trynum`; do
 	echo docker nat send test parallel "${p}", $x
-	docker_run "iperf3 -c $dst -O 5 -t $duration -J" "-e GRAFT=disable" \
+	docker_run "iperf3 -c $dst -O 5 -t $duration -P ${p} -J" "-e GRAFT=disable" \
+
 		> $outputdir/docker_nat_host_send_parallel-"${p}"_"${x}".txt
 done
 
 
 for x in `seq -w 1 $trynum`; do
 	echo docker nat recv test parallel "${p}", $x
-	docker_run "iperf3 -c $dst -O 5 -t $duration -R -J" "-e GRAFT=disable" \
+	docker_run "iperf3 -c $dst -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
 		> $outputdir/docker_nat_host_recv_parallel-"${p}"_"${x}".txt
 done
 
@@ -81,14 +82,14 @@ sudo ethtool -K $nic lro on
 
 for x in `seq -w 1 $trynum`; do
 	echo host send test parrallel "${p}", $x
-	iperf3 -c $dst -O 5 -t $duration -J \
+	iperf3 -c $dst -O 5 -t $duration -P ${p} -J \
 		> $outputdir/host_none_host_send_parallel-"${p}"_"${x}".txt
 done
 
 
 for x in `seq -w 1 $trynum`; do
 	echo host recv test parrallel "${p}", $x
-	iperf3 -c $dst -O 5 -t $duration -J \
+	iperf3 -c $dst -O 5 -t $duration -P ${p} -J \
 		> $outputdir/host_none_host_recv_parallel-"${p}"_"${x}".txt
 done
 
@@ -100,13 +101,13 @@ echo Testing Docker Container to Hosting Host via GRAFT
 
 for x in `seq -w 1 $trynum`; do
 	echo docker graft send to same host test parallel "${p}", $x
-	docker_run "iperf3 -c graft:$src -O 5 -t $duration -J" \
+	docker_run "iperf3 -c graft:$src -O 5 -t $duration -P ${p} -J" \
 		> $outputdir/docker_graft_same-host_send_parallel-"${p}"_"${x}".txt
 done
 
 for x in `seq -w 1 $trynum`; do
 	echo docker nat recv from same host test parallel "${p}", $x
-	docker_run "iperf3 -c graft:$src -O 5 -t $duration -R -J" \
+	docker_run "iperf3 -c graft:$src -O 5 -t $duration -P ${p} -R -J" \
 		> $outputdir/docker_graft_same-host_recv_parallel-"${p}"_"${x}".txt
 done
 
@@ -118,13 +119,13 @@ echo Testing Docker Container to Hosting Host via NAT
 
 for x in `seq -w 1 $trynum`; do
 	echo docker nat send to same host test parallel "${p}", $x
-	docker_run "iperf3 -c $src -O 5 -t $duration -J" "-e GRAFT=disable" \
+	docker_run "iperf3 -c $src -O 5 -t $duration -P ${p} -J" "-e GRAFT=disable" \
 		> $outputdir/docker_nat_same-host_send_parallel-"${p}"_"${x}".txt
 done
 
 for x in `seq -w 1 $trynum`; do
 	echo docker nat recv from same host test parallel "${p}", $x
-	docker_run "iperf3 -c $src -O 5 -t $duration -R -J" "-e GRAFT=disable" \
+	docker_run "iperf3 -c $src -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
 		> $outputdir/docker_nat_same-host_recv_parallel-"${p}"_"${x}".txt
 done
 

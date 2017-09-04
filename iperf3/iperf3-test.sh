@@ -42,7 +42,7 @@ sudo ethtool -K $nic lro on
 for x in `seq -w 1 $trynum`; do
 	echo docker graft send test parallel "${p}", $x
 	docker_run "iperf3 -c graft:$dst -O 5 -t $duration -J" \
-		> $outputdir/docker_graft_host_send_pararel-"${p}"_"${x}".txt
+		> $outputdir/docker_graft_host_send_parallel-"${p}"_"${x}".txt
 done
 
 

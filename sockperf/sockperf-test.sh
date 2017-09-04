@@ -6,8 +6,8 @@ dst=10.0.0.2
 src=10.0.0.1
 port=11111
 outputdir=output
-trynum=1
-time=4
+trynum=20
+time=30
 
 
 function docker_run() {

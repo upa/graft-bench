@@ -69,7 +69,7 @@ done
 for x in `seq -w 1 $trynum`; do
 	echo docker nat recv test parallel "${p}", $x
 	docker_run "iperf3 -c $dst -O 5 -t $duration -R -J" "-e GRAFT=disable" \
-		> $outputdir/docker_nat_host_send_parallel-"${p}"_"${x}".txt
+		> $outputdir/docker_nat_host_recv_parallel-"${p}"_"${x}".txt
 done
 
 

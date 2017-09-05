@@ -15,7 +15,8 @@
 
 ### How to start test
 
-First, execut sockperf server `sockperf sr --tcp` on both hosts.
+First, execut sockperf server `sockperf sr --tcp` on both hosts and
+`$ docker run -it --rm --net=weave --ip=10.32.1.2 -e GRAFT=disable graft-sockperf sockperf sr --tcp`
 
 ```shell-session
 $ cd graft-bench/sockperf

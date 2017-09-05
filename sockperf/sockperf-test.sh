@@ -4,6 +4,8 @@ image=graft-sockperf
 nic=enp1s0
 dst=10.0.0.2
 src=10.0.0.1
+weave_dst=10.32.1.2
+weave_src=10.32.1.1
 port=11111
 outputdir=output
 trynum=20
@@ -21,7 +23,7 @@ function docker_run() {
 
         execcmd="${ipgraft} && $cmd"
 
-        docker run -it --cap-add=NET_ADMIN                      \
+        docker run --rm -it --cap-add=NET_ADMIN                      \
                 -e GRAFT_CONV_PAIRS="0.0.0.0:${port}=in"        \
                 -e GRAFT_BBCONN="out"                           \
                 $options                                        \
@@ -29,7 +31,7 @@ function docker_run() {
 }
 
 
-
+<<COUT
 #####################################################################
 echo
 echo Testing Graft. enable LRO on $nic
@@ -54,9 +56,21 @@ for x in `seq -w 1 $trynum`; do
 		"-e GRAFT=disable"	\
                 > $outputdir/docker_nat_host_pp_tcp_"${x}".txt
 done
+COUT
 
+#####################################################################
+echo
+echo Testing weave. disalbe LRO on $nic
+sudo ethtool -K $nic lro off
 
+for x in `seq -w 1 $trynum`; do
+        echo docker weave tcp ping pong, $x
+        docker_run "sockperf pp --time $time --msg-size 14 --ip ${weave_dst} --tcp" \
+		"-e GRAFT=disable" "--net=weave" "--ip=${weave_src}"	\
+                > $outputdir/docker_weave_docker_pp_tcp_"${x}".txt
+done
 
+<<COUT2
 #####################################################################
 echo
 echo Testing Hosts. enable LRO on $nic
@@ -93,4 +107,5 @@ for x in `seq -w 1 $trynum`; do
                 > $outputdir/docker_nat_same-host_pp_tcp_${x}.txt
 done
 
+COUT2
 

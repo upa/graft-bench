@@ -19,11 +19,14 @@ set size ratio 0.6
 
 set boxwidth 0.5
 set style fill solid 0.5
-set xrange [0:4]
+set xrange [0:7]
 set yrange [0:]
 set key top left
 #set xtics rotate by -30 offset first -0.2,1.5
 
 plot	"dat/latency-tcp.dat"	\
 	using ($0+1):2:3:4:(0.5):xtic(1)	\
-	with boxerrorbars lw 3 lc 1 notitle
+	with boxerrorbars lw 3 lc 1 title "Inter-Hosts",	\
+	"dat/latency-tcp-lo.dat"	\
+	using ($0+5):2:3:4:(0.5):xtic(1)	\
+	with boxerrorbars lw 3 lc 2 title "Loopback"

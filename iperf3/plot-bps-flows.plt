@@ -25,4 +25,6 @@ plot	"dat/multi-flow_host_none_host_".direct.".dat"	\
 	"dat/multi-flow_docker_graft_host_".direct.".dat"	\
 	using 1:2 with lp lc 2 lw 4 title "GRAFT",	\
 	"dat/multi-flow_docker_nat_host_".direct.".dat"	\
-	using 1:2 with lp lc 3 lw 4 title "NAT"
+	using 1:2 with lp lc 3 lw 4 title "NAT",	\
+	"dat/multi-flow_docker_weave_docker_".direct.".dat" \
+	using 1:2 with lp lc 4 lw 4 title "Weave"

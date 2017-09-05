@@ -8,6 +8,8 @@
 		>> dat/single-flow-send.dat
 ./parser.py NAT		docker_nat_host_send_parallel-01 \
 		>> dat/single-flow-send.dat
+./parser.py Weave	docker_weave_docker_send_parallel-01 \
+		>> dat/single-flow-send.dat
 
 
 ./parser.py GRAFT	docker_graft_same-host_send_parallel-01 \
@@ -23,6 +25,8 @@
 		>> dat/single-flow-recv.dat
 ./parser.py NAT		docker_nat_host_recv_parallel-01 \
 		>> dat/single-flow-recv.dat
+./parser.py Weave	docker_weave_docker_recv_parallel-01 \
+		>> dat/single-flow-recv.dat
 
 
 ./parser.py GRAFT	docker_graft_same-host_recv_parallel-01 \
@@ -34,7 +38,9 @@ gnuplot -e "direct='send'" plot-bps.plt
 gnuplot -e "direct='recv'" plot-bps.plt
 
 # gater multiple flows results
-for scheme in host_none_host docker_graft_host docker_nat_host; do
+for scheme in \
+	host_none_host docker_graft_host \
+	docker_nat_host docker_weave_docker; do
 for direct in send recv; do
 	of=dat/multi-flow_${scheme}_${direct}.dat
 	rm $of

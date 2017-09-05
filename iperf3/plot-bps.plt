@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced color fontscale 1
+set terminal pdfcairo enhanced color fontscale 0.9
 set output "graph/graph-iperf3-1flow-".direct.".pdf"
 set termoption noenhanced
 

@@ -4,6 +4,8 @@ image=graft-iperf3
 nic=enp1s0
 dst="10.0.0.2"
 src=10.0.0.1
+weave_dst="10.32.1.2"
+weave_src="10.32.1.1"
 port=5201
 outputdir=output
 trynum=20
@@ -21,11 +23,11 @@ function docker_run() {
 
 	execcmd="${ipgraft} && $cmd"
 
-	echo docker run -it --cap-add=NET_ADMIN			\
+	echo docker run --rm -it --cap-add=NET_ADMIN		\
 		$options					\
 		$image bash -c "${execcmd}"  >&2
 
-	docker run -it --cap-add=NET_ADMIN			\
+	docker run --rm -it --cap-add=NET_ADMIN			\
 		$options					\
 		$image bash -c "${execcmd}"
 }
@@ -33,7 +35,8 @@ function docker_run() {
 
 
 for p in 01 02 04 06 08 10 12 14 16 18 20; do
-<<OUT
+
+<<COMMENTOUT1
 #####################################################################
 echo
 echo Testing Graft. enable LRO on $nic
@@ -53,10 +56,7 @@ for x in `seq -w 1 $trynum`; do
 done
 
 
-docker rm $(docker ps -a --filter 'status=exited' -q)
 #####################################################################
-OUT
-
 echo
 echo Testing Docker NAT. disalbe LRO on $nic
 sudo ethtool -K $nic lro off
@@ -67,15 +67,35 @@ for x in `seq -w 1 $trynum`; do
 		> $outputdir/docker_nat_host_send_parallel-"${p}"_"${x}".txt
 done
 
-<<OUT2
+
 for x in `seq -w 1 $trynum`; do
 	echo docker nat recv test parallel "${p}", $x
 	docker_run "iperf3 -c $dst -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
 		> $outputdir/docker_nat_host_recv_parallel-"${p}"_"${x}".txt
 done
+COMMENTOUT1
+
+#####################################################################
+echo
+echo Testing Weave. disable LRO $nic
+sudo ethtool -K $nic lro off
+
+for x in `seq -w 1 $trynum`; do
+	echo docker weave send test parallel "${p}", $x
+	docker_run "iperf3 -c ${weave_dst} -O 5 -t $duration -P ${p} -J" \
+		"-e GRAFT=disable" "--net=weave" "--ip=${weave_src}"	\
+		> $outputdir/docker_weave_docker_send_parallel-"${p}"_"${x}".txt
+done
 
 
-docker rm $(docker ps -a --filter 'status=exited' -q)
+for x in `seq -w 1 $trynum`; do
+	echo docker weave recv test parallel "${p}", $x
+	docker_run "iperf3 -c ${weave_dst} -O 5 -t $duration -P ${p} -R -J" \
+		"-e GRAFT=disable" "--net=weave" "--ip=${weave_src}"	\
+		> $outputdir/docker_weave_docker_recv_parallel-"${p}"_"${x}".txt
+done
+
+<<COMMENTOUT2
 #####################################################################
 echo
 echo Testing Host. enable LRO on $nic
@@ -95,7 +115,6 @@ for x in `seq -w 1 $trynum`; do
 done
 
 
-docker rm $(docker ps -a --filter 'status=exited' -q)
 #####################################################################
 echo
 echo Testing Docker Container to Hosting Host via GRAFT
@@ -113,7 +132,6 @@ for x in `seq -w 1 $trynum`; do
 done
 
 
-docker rm $(docker ps -a --filter 'status=exited' -q)
 #####################################################################
 echo
 echo Testing Docker Container to Hosting Host via NAT
@@ -130,7 +148,7 @@ for x in `seq -w 1 $trynum`; do
 		> $outputdir/docker_nat_same-host_recv_parallel-"${p}"_"${x}".txt
 done
 
-OUT2
+COMMENTOUT2
 done
 
 

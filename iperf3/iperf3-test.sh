@@ -33,7 +33,7 @@ function docker_run() {
 
 
 for p in 01 02 04 06 08 10 12 14 16 18 20; do
-
+<<OUT
 #####################################################################
 echo
 echo Testing Graft. enable LRO on $nic
@@ -55,6 +55,8 @@ done
 
 docker rm $(docker ps -a --filter 'status=exited' -q)
 #####################################################################
+OUT
+
 echo
 echo Testing Docker NAT. disalbe LRO on $nic
 sudo ethtool -K $nic lro off
@@ -62,11 +64,10 @@ sudo ethtool -K $nic lro off
 for x in `seq -w 1 $trynum`; do
 	echo docker nat send test parallel "${p}", $x
 	docker_run "iperf3 -c $dst -O 5 -t $duration -P ${p} -J" "-e GRAFT=disable" \
-
 		> $outputdir/docker_nat_host_send_parallel-"${p}"_"${x}".txt
 done
 
-
+<<OUT2
 for x in `seq -w 1 $trynum`; do
 	echo docker nat recv test parallel "${p}", $x
 	docker_run "iperf3 -c $dst -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
@@ -129,7 +130,7 @@ for x in `seq -w 1 $trynum`; do
 		> $outputdir/docker_nat_same-host_recv_parallel-"${p}"_"${x}".txt
 done
 
-
+OUT2
 done
 
 

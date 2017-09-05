@@ -1,2 +1,25 @@
 sockperf: [2;35m== version #3.1-no.git == [0m
-sockperf: ERROR: Can`t connect socket (errno=111 Connection refused)
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 10.0.0.1        PORT = 11111 # TCP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=30.450 sec; SentMessages=3320199; ReceivedMessages=3320198
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=30.000 sec; SentMessages=3270989; ReceivedMessages=3270989
+sockperf: [2;35m====> avg-lat=  4.571 (std-dev=0.206)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 4.571 usec
+sockperf: [2;35mTotal 3270989 observations[0m; each percentile contains 32709.89 observations
+sockperf: ---> <MAX> observation =  185.967
+sockperf: ---> percentile 99.999 =   19.067
+sockperf: ---> percentile 99.990 =   10.686
+sockperf: ---> percentile 99.900 =    6.081
+sockperf: ---> percentile 99.000 =    4.722
+sockperf: ---> percentile 90.000 =    4.652
+sockperf: ---> percentile 75.000 =    4.617
+sockperf: ---> percentile 50.000 =    4.574
+sockperf: ---> percentile 25.000 =    4.525
+sockperf: ---> <MIN> observation =    3.637

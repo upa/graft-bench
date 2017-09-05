@@ -56,7 +56,6 @@ for x in `seq -w 1 $trynum`; do
 		"-e GRAFT=disable"	\
                 > $outputdir/docker_nat_host_pp_tcp_"${x}".txt
 done
-COUT
 
 #####################################################################
 echo
@@ -70,7 +69,6 @@ for x in `seq -w 1 $trynum`; do
                 > $outputdir/docker_weave_docker_pp_tcp_"${x}".txt
 done
 
-<<COUT2
 #####################################################################
 echo
 echo Testing Hosts. enable LRO on $nic
@@ -83,6 +81,7 @@ for x in `seq -w 1 $trynum`; do
 done
 
 
+COUT
 
 #####################################################################
 echo
@@ -107,5 +106,4 @@ for x in `seq -w 1 $trynum`; do
                 > $outputdir/docker_nat_same-host_pp_tcp_${x}.txt
 done
 
-COUT2
 

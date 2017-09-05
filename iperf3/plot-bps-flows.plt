@@ -16,7 +16,7 @@ set linetype cycle  9
 set grid ytic
 set ylabel "Throughput (Gbps)"
 set xlabel "Number of Flows"
-set key bottom left
+set key bottom right
 
 set yrange [0:]
 

@@ -37,9 +37,9 @@ echo Testing Graft. enable LRO on $nic
 sudo ethtool -K $nic lro on
 
 for x in `seq -w 1 $trynum`; do
-        echo docker graft tcp ping pong, $x
-        docker_run "sockperf pp --time $time --msg-size 14 --ip $dst --tcp" \
-                > $outputdir/docker_graft_host_pp_tcp_"${x}".txt
+        echo docker graft udp ping pong, $x
+        docker_run "sockperf pp --time $time --msg-size 14 --ip $dst " \
+                > $outputdir/docker_graft_host_pp_udp_"${x}".txt
 done
 
 
@@ -50,10 +50,10 @@ echo Testing Docker NAT. disalbe LRO on $nic
 sudo ethtool -K $nic lro off
 
 for x in `seq -w 1 $trynum`; do
-        echo docker nat tcp ping pong, $x
-        docker_run "sockperf pp --time $time --msg-size 14 --ip $dst --tcp" \
+        echo docker nat udp ping pong, $x
+        docker_run "sockperf pp --time $time --msg-size 14 --ip $dst " \
 		"-e GRAFT=disable"	\
-                > $outputdir/docker_nat_host_pp_tcp_"${x}".txt
+                > $outputdir/docker_nat_host_pp_udp_"${x}".txt
 done
 
 #####################################################################
@@ -62,10 +62,10 @@ echo Testing weave. disalbe LRO on $nic
 sudo ethtool -K $nic lro off
 
 for x in `seq -w 1 $trynum`; do
-        echo docker weave tcp ping pong, $x
-        docker_run "sockperf pp --time $time --msg-size 14 --ip ${weave_dst} --tcp" \
+        echo docker weave udp ping pong, $x
+        docker_run "sockperf pp --time $time --msg-size 14 --ip ${weave_dst} " \
 		"-e GRAFT=disable" "--net=weave" "--ip=${weave_src}"	\
-                > $outputdir/docker_weave_docker_pp_tcp_"${x}".txt
+                > $outputdir/docker_weave_docker_pp_udp_"${x}".txt
 done
 
 #####################################################################
@@ -74,9 +74,9 @@ echo Testing Hosts. enable LRO on $nic
 sudo ethtool -K $nic lro on
 
 for x in `seq -w 1 $trynum`; do
-        echo host tcp ping pong, $x
-        sockperf pp --time $time --msg-size 14 --ip $dst --tcp \
-                > $outputdir/host_none_host_pp_tcp_${x}.txt
+        echo host udp ping pong, $x
+        sockperf pp --time $time --msg-size 14 --ip $dst  \
+                > $outputdir/host_none_host_pp_udp_${x}.txt
 done
 
 
@@ -86,9 +86,9 @@ echo
 echo Testing Docker Container to Hosting Host via GRAFT
 
 for x in `seq -w 1 $trynum`; do
-        echo docker graft send to same host tcp ping pong, $x
-        docker_run "sockperf pp --time $time --msg-size 14 --ip $src --tcp" \
-                > $outputdir/docker_graft_same-host_pp_tcp_${x}.txt
+        echo docker graft send to same host udp ping pong, $x
+        docker_run "sockperf pp --time $time --msg-size 14 --ip $src " \
+                > $outputdir/docker_graft_same-host_pp_udp_${x}.txt
 done
 
 
@@ -98,10 +98,10 @@ echo
 echo Testing Docker Container to Hosting Host via NAT
 
 for x in `seq -w 1 $trynum`; do
-        echo docker graft send to same host tcp ping pong, $x
-        docker_run "sockperf pp --time $time --msg-size 14 --ip $src --tcp" \
+        echo docker graft send to same host udp ping pong, $x
+        docker_run "sockperf pp --time $time --msg-size 14 --ip $src " \
 		"-e GRAFT=disable"	\
-                > $outputdir/docker_nat_same-host_pp_tcp_${x}.txt
+                > $outputdir/docker_nat_same-host_pp_udp_${x}.txt
 done
 
 

@@ -1,0 +1,27 @@
+[1m[32mlibgrwrap.so:399:socket(): overwrite family 2 with AF_GRAFT (4)[0m
+sockperf: [2;35m== version #3.1-no.git == [0m
+sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+
+[ 0] IP = 10.0.0.2        PORT = 11111 # UDP
+sockperf: Warmup stage (sending a few dummy messages)...
+sockperf: Starting test...
+[1m[32mlibgrwrap.so:604:sendto(): try bind() before connect()[0m
+sockperf: Test end (interrupted by timer)
+sockperf: Test ended
+sockperf: [Total Run] RunTime=30.450 sec; SentMessages=2354320; ReceivedMessages=2354319
+sockperf: ========= Printing statistics for Server No: 0
+sockperf: [Valid Duration] RunTime=30.000 sec; SentMessages=2319671; ReceivedMessages=2319671
+sockperf: [2;35m====> avg-lat=  6.452 (std-dev=0.440)[0m
+sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
+sockperf: Summary: Latency is 6.452 usec
+sockperf: [2;35mTotal 2319671 observations[0m; each percentile contains 23196.71 observations
+sockperf: ---> <MAX> observation =   79.397
+sockperf: ---> percentile 99.999 =   26.017
+sockperf: ---> percentile 99.990 =   19.644
+sockperf: ---> percentile 99.900 =   16.272
+sockperf: ---> percentile 99.000 =    6.859
+sockperf: ---> percentile 90.000 =    6.610
+sockperf: ---> percentile 75.000 =    6.516
+sockperf: ---> percentile 50.000 =    6.432
+sockperf: ---> percentile 25.000 =    6.344
+sockperf: ---> <MIN> observation =    5.688

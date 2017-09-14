@@ -48,6 +48,9 @@ if __name__ == '__main__' :
         if re.match(prefix, filename) :
             filenames.append("output/" + filename)
 
+    # Gbps
+    n = 1000 * 1000 * 1000
+
     avg, mini, maxi = open_and_gather(filenames)
-    print "%s\t%f\t%f\t%f" % (rowname, avg, mini, maxi)
+    print "%s\t%f\t%f\t%f" % (rowname, avg / n, mini / n, maxi / n)
     

@@ -1,5 +1,5 @@
 set terminal pdf enhanced color fontscale 2.4
-set output "graph/graph-sockperf-".l4."-current.pdf"
+set output "graph/graph-sockperf-".l4."-current-wo-weave.pdf"
 set termoption noenhanced
 
 set linetype 1 lc rgb "#009e73" lw 1
@@ -19,7 +19,7 @@ set size square
 
 set boxwidth 0.5
 set style fill solid 0.5
-set xrange [0:4]
+set xrange [0:3]
 set yrange [0:]
 set key top left
 #set xtics rotate by -30 offset first -0.2,1.5
@@ -28,5 +28,5 @@ plot	"dat/latency-".l4.".dat"	\
 	every ::0::0 using ($0+1):2:3:4:(0.5):xtic(1)	\
 	with boxerrorbars lw 8 lc 1 notitle,	\
 	"dat/latency-".l4.".dat"	\
-	every ::2::3 using ($0+2):2:3:4:(0.5):xtic(1)	\
+	every ::2::2 using ($0+2):2:3:4:(0.5):xtic(1)	\
 	with boxerrorbars lw 8 lc 1 notitle,	\

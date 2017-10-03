@@ -1,5 +1,5 @@
 set terminal pdfcairo enhanced color fontscale 1
-set output "graph/graph-sockperf-tcp.pdf"
+set output "graph/graph-sockperf-".l4.".pdf"
 set termoption noenhanced
 
 set linetype 1 lc rgb "#009e73" lw 1
@@ -24,9 +24,9 @@ set yrange [0:]
 set key top left
 #set xtics rotate by -30 offset first -0.2,1.5
 
-plot	"dat/latency-tcp.dat"	\
+plot	"dat/latency-".l4.".dat"	\
 	using ($0+1):2:3:4:(0.5):xtic(1)	\
 	with boxerrorbars lw 3 lc 1 title "Inter-Hosts",	\
-	"dat/latency-tcp-lo.dat"	\
+	"dat/latency-".l4."-lo.dat"	\
 	using ($0+5):2:3:4:(0.5):xtic(1)	\
 	with boxerrorbars lw 3 lc 2 title "Loopback"

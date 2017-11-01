@@ -31,8 +31,10 @@
 		>> dat/latency-udp-lo.dat
 
 gnuplot -e "l4='tcp'" plot-latency.plt
-gnuplot -e "l4='tcp'" plot-latency-current.plt
 gnuplot -e "l4='udp'" plot-latency.plt
+gnuplot -e "l4='tcp'" plot-latency-lo.plt
+gnuplot -e "l4='udp'" plot-latency-lo.plt
+gnuplot -e "l4='tcp'" plot-latency-current.plt
 gnuplot -e "l4='udp'" plot-latency-current.plt
 
 gnuplot -e "l4='tcp'" plot-latency-current-wo-weave.plt

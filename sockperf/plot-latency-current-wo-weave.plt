@@ -25,8 +25,8 @@ set key top left
 #set xtics rotate by -30 offset first -0.2,1.5
 
 plot	"dat/latency-".l4.".dat"	\
-	every ::0::0 using ($0+1):2:3:4:(0.5):xtic(1)	\
+	every ::0::0 using ($0+1):2:3:4:(0.5):xtic("Host")	\
 	with boxerrorbars lw 8 lc 1 notitle,	\
 	"dat/latency-".l4.".dat"	\
-	every ::2::2 using ($0+2):2:3:4:(0.5):xtic(1)	\
+	every ::2::2 using ($0+2):2:3:4:(0.5):xtic("Container")	\
 	with boxerrorbars lw 8 lc 1 notitle,	\

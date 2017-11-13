@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced color fontscale 1
+set terminal pdfcairo enhanced color fontscale 0.9
 set output "graph/graph-nginx-siege-tps-conc-".conc.".pdf"
 
 set termoption noenhanced
@@ -17,7 +17,7 @@ set linetype cycle  9
 set grid ytic
 set ylabel "Transactions per second"
 set xlabel "File size (byte)"
-set size ratio 0.6
+set size ratio 0.8
 
 plot	"dat/trans-rate-nat-conc-".conc.".dat"	\
 	using ($0):2:xtic(1) with lp lc 1 lw 4 title "docker NAT",	\

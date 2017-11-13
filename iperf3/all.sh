@@ -36,8 +36,12 @@
 
 gnuplot -e "direct='send'" plot-bps.plt
 gnuplot -e "direct='recv'" plot-bps.plt
+gnuplot -e "direct='send'" plot-bps-lo.plt
+gnuplot -e "direct='recv'" plot-bps-lo.plt
 gnuplot -e "direct='send'" plot-bps-current.plt
 gnuplot -e "direct='recv'" plot-bps-current.plt
+gnuplot -e "direct='send'" plot-bps-current-wo-weave.plt
+gnuplot -e "direct='recv'" plot-bps-current-wo-weave.plt
 
 # gater multiple flows results
 for scheme in \

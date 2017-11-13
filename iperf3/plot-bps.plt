@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced color fontscale 0.9
+set terminal pdf enhanced color fontscale 2.4
 set output "graph/graph-iperf3-1flow-".direct.".pdf"
 set termoption noenhanced
 
@@ -15,19 +15,16 @@ set linetype cycle  9
 
 set grid ytic
 set ylabel "Throughput (Gbps)"
-set size ratio 0.6
+set size ratio 0.7
 
 set boxwidth 0.5
 set style fill solid 0.5
-set xrange [0:7]
+set xrange [0:5]
 set yrange [0:]
 set key top left
 #set xtics rotate by -30 offset first -0.2,1.5
 
 plot	"dat/single-flow-".direct.".dat"	\
 	using ($0+1):2:3:4:(0.5):xtic(1)	\
-	with boxerrorbars lw 3 lc 1 title "Inter-Hosts",	\
-	"dat/single-flow-".direct."-lo.dat"	\
-	using ($0+5):2:3:4:(0.5):xtic(1)	\
-	with boxerrorbars lw 3 lc 2 title "Loopback"
+	with boxerrorbars lw 6 lc 1 notitle
 

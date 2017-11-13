@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced color fontscale 1
+set terminal pdfcairo enhanced color fontscale 0.9
 set output "graph/graph-nginx-siege-bps-conc-".conc.".pdf"
 
 set termoption noenhanced
@@ -17,7 +17,7 @@ set linetype cycle  9
 set grid ytic
 set ylabel "Throughput (Gbps)"
 set xlabel "File size (byte)"
-set size ratio 0.6
+set size ratio 0.8
 set key top left
 
 plot	"dat/throughput-nat-conc-".conc.".dat"	\

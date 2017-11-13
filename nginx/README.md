@@ -22,3 +22,8 @@ $ cd graft-bench/nginx/docker
 $ docker run -it --rm --cap-add=NET_ADMIN -v `pwd`/html:/var/www/html rnginx-graft 
 $ docker run -it --rm -p 8080:8080 -v `pwd`/html:/var/www/html nginx-nat
 ```
+
+I recommend adding following sysctl params to reduce TIME_WAIT sockets
+```
+net.ipv4.tcp_fin_timeout = 2
+```

@@ -15,7 +15,7 @@ msgcnt=10000
 for x in `seq 1 10`; do
 for msgsize in 64 256 1000 4000 16000 64000 256000 1000000 4000000 16000000 64000000; do
 
-	out="output/thr-thr-msgsize_${msgsize}-msgcnt_${msgcnt}-${x}.txt"
+	out="output/graft-thr-msgsize_${msgsize}-msgcnt_${msgcnt}-${x}.txt"
 
 	echo msgsize $msgsize, count $x
 	echo output file: $out

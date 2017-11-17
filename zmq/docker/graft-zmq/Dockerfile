@@ -16,9 +16,8 @@ RUN apt-get update && apt-get install -y \
 	libtool
 
 # donwload and compile zmq
+ADD zeromq-4.2.2 ${workdir}/zeromq-4.2.2
 RUN cd  ${workdir}	\
-	&& wget http://web.sfc.wide.ad.jp/~upa/zeromq-4.2.2-perf-mod.tar.gz \
-	&& tar zxvf zeromq-4.2.2-perf-mod.tar.gz	\
 	&& mv zeromq-4.2.2 zmq	\
 	&& cd zmq	\
 	&& ./autogen.sh	\

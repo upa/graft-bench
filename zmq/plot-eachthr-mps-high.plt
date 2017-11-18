@@ -1,5 +1,5 @@
-set terminal pdf enhanced color fontscale 0.5
-set output "graph/graph-zmq-eachthr".rev."-bps.pdf"
+set terminal pdf enhanced color fontscale 0.7
+set output "graph/graph-zmq-eachthr".rev."-mps-high.pdf"
 set termoption noenhanced
 set bmargin 3.5
 
@@ -15,20 +15,21 @@ set linetype 9 lc rgb "dark-violet" lw 1
 set linetype cycle  9
 
 set grid ytic
-set ylabel "Throughput (Gbps)"
+set ylabel "Message per second (mps)"
 set xlabel "Message size (Byte)"
-set size ratio 0.3
+set size ratio 0.5
 set key top right
-
-set yrange [0:]
 
 set boxwidth 0.7
 set style fill solid 0.7
 
-set xtics offset 0.6
+set xtics offset 1.4
 
-plot	"dat/nat-eachthr".rev.".dat" using ($0)*2:($2/1000000000):xtic(1) \
+plot	"dat/nat-eachthr".rev.".dat" \
+	every ::12::19 using ($0)*2:4:xtic(1) \
 	with boxes lc 1 lw 2 title " NAT",	\
-	"dat/graft-eachthr".rev.".dat" using ($0)*2+0.7:($2/1000000000) \
+	"dat/graft-eachthr".rev.".dat" \
+	every ::12::19 using ($0)*2+0.7:4 \
 	with boxes lc 2 lw 2 title " AF_GRAFT"
+
 

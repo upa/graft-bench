@@ -97,7 +97,10 @@ if __name__ == '__main__' :
     # gather data
     for filename in sys.argv[1:] :
         
-        msgsize = int(filename.split("-")[2].split("_")[1].split(".")[0])
+        for param in filename.split("-") :
+            if "msgsize" in param :
+                msgsize = int(param.split("_")[1].split(".")[0])
+                break
 
         mps, bps = extract(filename)
 
@@ -108,7 +111,7 @@ if __name__ == '__main__' :
 
 
     # calculate
-    print "#Size AvgBps MidBps AvgMps MidMps"
+    print "#Size\tAvgBps\tMidBps\tAvgMps\tMidMps"
     for msgsize, [ mps, bps ] in sorted(result.items()) :
         print "%s\t%.2f\t%.2f\t%.2f\t%.2f" % (rnd(msgsize),
                                               bps["avg"], bps["mid"],

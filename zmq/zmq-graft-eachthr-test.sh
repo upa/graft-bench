@@ -7,7 +7,7 @@ sshcmd="ssh -i ~/.ssh/id_rsa_nopass $docker_server"
 eachthr=~/src/zeromq-4.2.2/perf/eachthr
 
 
-duration=40
+duration=120
 
 ipcmd="ip gr add zmq type ipv4 addr 10.0.0.1 port 5555"
 perfcmd="mirror_thr tcp://0.0.0.0:5555"

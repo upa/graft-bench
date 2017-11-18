@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 1
+set terminal pdf enhanced color fontscale 0.8
 set termoption noenhanced
 set output "graph/graph-zmq-eachlat-high.pdf"
 
@@ -22,7 +22,7 @@ set boxwidth 0.7
 set style fill solid 0.75
 set ylabel "Latency (us)"
 set xlabel "Message size (Byte)"
-set size ratio 0.7
+set size ratio 0.5
 
 set yrange [0:]
 set key top left

@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 0.8
+set terminal pdf enhanced color fontscale 0.6
 set termoption noenhanced
 set output "graph/graph-zmq-eachlat-low.pdf"
 

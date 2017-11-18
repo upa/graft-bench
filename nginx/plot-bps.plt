@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced color fontscale 0.9
+set terminal pdf enhanced color fontscale 0.7
 set output "graph/graph-nginx-siege-bps-conc-".conc.".pdf"
 
 set termoption noenhanced
@@ -17,12 +17,17 @@ set linetype cycle  9
 set grid ytic
 set ylabel "Throughput (Gbps)"
 set xlabel "File size (byte)"
-set size ratio 0.8
+set size ratio 0.6
 set key top left
 
+set boxwidth 0.7
+set style fill solid 0.7
+
+set xtics offset 0.7
+
 plot	"dat/throughput-nat-conc-".conc.".dat"	\
-	using ($0):($2 / 1000 * 8):xtic(1) \
-	with lp lc 1 lw 4 title "docker NAT",	\
+	using ($0)*2:($2 / 1000 * 8):xtic(1) \
+	with boxes lc 1 lw 2 title "  NAT",	\
 	"dat/throughput-graft-conc-".conc.".dat"	\
-	using ($0):($2 /1000 * 8) \
-	with lp lc 2 lw 4 title "AF_GRAFT"
+	using ($0)*2+0.7:($2 /1000 * 8) \
+	with boxes lc 2 lw 2 title "  AF_GRAFT"

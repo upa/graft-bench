@@ -30,8 +30,8 @@ set key top left
 
 set xtics offset 1
 
-plot	"dat/nat-eachlat.dat" every 1::0::12 using ($0)*2:2:xtic(1) \
+plot	"dat/nat-eachlat.dat" every 1::0::13 using ($0)*2:2:xtic(1) \
 	with boxes lw 2 lc 1 title "  NAT",	\
-	"dat/graft-eachlat.dat"	every 1::0::12 using ($0)*2+0.7:2 \
+	"dat/graft-eachlat.dat"	every 1::0::13 using ($0)*2+0.7:2 \
 	with boxes lw 2 lc 2 title "  AF_GRAFT" 
 

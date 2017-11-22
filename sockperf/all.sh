@@ -7,7 +7,7 @@
 		>> dat/latency-tcp.dat
 ./parser.py NAT		docker_nat_host_pp_tcp	\
 		>> dat/latency-tcp.dat
-./parser.py Weave	docker_weave_docker_pp_tcp	\
+./parser.py VXLAN	docker_weave_docker_pp_tcp	\
 		>> dat/latency-tcp.dat
 
 ./parser.py GRAFT	docker_graft_same-host_pp_tcp	\
@@ -22,7 +22,7 @@
 		>> dat/latency-udp.dat
 ./parser.py NAT		docker_nat_host_pp_udp	\
 		>> dat/latency-udp.dat
-./parser.py Weave	docker_weave_docker_pp_udp	\
+./parser.py VXLAN	docker_weave_docker_pp_udp	\
 		>> dat/latency-udp.dat
 
 ./parser.py GRAFT	docker_graft_same-host_pp_udp	\

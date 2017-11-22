@@ -8,7 +8,7 @@
 		>> dat/single-flow-send.dat
 ./parser.py NAT		docker_nat_host_send_parallel-01 \
 		>> dat/single-flow-send.dat
-./parser.py Weave	docker_weave_docker_send_parallel-01 \
+./parser.py VXLAN	docker_weave_docker_send_parallel-01 \
 		>> dat/single-flow-send.dat
 
 
@@ -25,7 +25,7 @@
 		>> dat/single-flow-recv.dat
 ./parser.py NAT		docker_nat_host_recv_parallel-01 \
 		>> dat/single-flow-recv.dat
-./parser.py Weave	docker_weave_docker_recv_parallel-01 \
+./parser.py VXLAN	docker_weave_docker_recv_parallel-01 \
 		>> dat/single-flow-recv.dat
 
 

@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced color fontscale 1
+set terminal pdf enhanced color fontscale 1
 set termoption noenhanced
 set output "graph/graph-iperf3-multi-flow-".direct.".pdf"
 
@@ -27,4 +27,4 @@ plot	"dat/multi-flow_host_none_host_".direct.".dat"	\
 	"dat/multi-flow_docker_nat_host_".direct.".dat"	\
 	using 1:2 with lp lc 3 lw 4 title "NAT",	\
 	"dat/multi-flow_docker_weave_docker_".direct.".dat" \
-	using 1:2 with lp lc 4 lw 4 title "Weave"
+	using 1:2 with lp lc 4 lw 4 title "VXLAN"

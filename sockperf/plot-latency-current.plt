@@ -15,7 +15,7 @@ set key top left
 
 plot	"dat/latency-".l4.".dat"	\
 	every ::0::0 using ($0+1):2:3:4:(0.5):xtic(1)	\
-	with boxerrorbars lw 8 lt 1 notitle,	\
+	with boxerrorbars lt 1 notitle,	\
 	"dat/latency-".l4.".dat"	\
 	every ::2::3 using ($0+2):2:3:4:(0.5):xtic(1)	\
-	with boxerrorbars lw 8 lt 1 notitle,	\
+	with boxerrorbars lt 1 notitle,	\

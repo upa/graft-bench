@@ -1,0 +1,24 @@
+
+
+
+
+# y gird, XXX: dt does not affect
+set grid ytic dt (5,2) lw 2
+
+
+# box graph setup
+set boxwidth 0.7
+set style fill solid 0.7
+
+
+# line color
+set linetype 1 lc rgb "#009e73" lw 3			pt 1 ps 1.2
+set linetype 2 lc rgb "#56b4e9" lw 3 dt (6,2)		pt 6 ps 1.2
+set linetype 3 lc rgb "#e69f00" lw 3 dt (4,2)		pt 3 ps 1.2
+set linetype 4 lc rgb "#f0e442" lw 3 dt (10,3,2,3)	pt 4 ps 1.2
+set linetype 5 lc rgb "#0072b2" lw 3 dt (10,3,2,3,2,3)	pt 5 ps 1.2
+set linetype 6 lc rgb "#e54e40" lw 3 dt (1,4)		pt 7 ps 1.2
+set linetype 7 lc rgb "black"   lw 3 dt (10,5)		pt 8 ps 1.2
+set linetype 8 lc rgb "gray50"  lw 3
+set linetype 9 lc rgb "dark-violet" lw 3
+set linetype cycle  9

@@ -17,8 +17,8 @@ set key top left
 
 plot	"dat/single-flow-".direct.".dat"	\
 	every ::0::0 using ($0+1):2:3:4:(0.5):xtic("Host")	\
-	with boxerrorbars lw 6 lt 1 notitle,	\
+	with boxerrorbars lt 1 notitle,	\
 	"dat/single-flow-".direct.".dat"	\
 	every ::2::2 using ($0+2):2:3:4:(0.5):xtic("Container")	\
-	with boxerrorbars lw 6 lt 1 notitle
+	with boxerrorbars lt 1 notitle
 

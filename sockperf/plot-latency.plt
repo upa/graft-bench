@@ -15,4 +15,4 @@ set key top left
 
 plot	"dat/latency-".l4.".dat"	\
 	using ($0+1):2:3:4:(0.5):xtic(1)	\
-	with boxerrorbars lw 6 lc 1 notitle
+	with boxerrorbars lc 1 notitle

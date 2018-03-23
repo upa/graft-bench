@@ -1,14 +1,14 @@
-set terminal pdfcairo enhanced color fontscale 0.7
+set terminal pdfcairo enhanced color fontscale 1.1
 set output "graph/graph-nginx-siege-tps-conc-".conc.".pdf"
 
 set termoption noenhanced
 
-set ylabel "Transactions per second"
+set ylabel "Transactions per second (ktps)"
 set xlabel "File size (byte)"
-set size ratio 0.6
+set size ratio 0.4
 
 
-plot	"dat/trans-rate-nat-conc-".conc.".dat"	\
-	using 0:2:xtic(1) with lp title "NAT",	\
-	"dat/trans-rate-graft-conc-".conc.".dat"	\
-	using 0:2 with lp title "AF_GRAFT"
+plot	"dat/trans-rate-graft-conc-".conc.".dat"	\
+	using 0:($2/1000):xtic(1) with lp title "GRAFT",	\
+	"dat/trans-rate-nat-conc-".conc.".dat"	\
+	using 0:($2/1000) with lp title "NAT"

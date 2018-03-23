@@ -36,6 +36,8 @@
 
 gnuplot -e "direct='send'" plot-bps.plt
 gnuplot -e "direct='recv'" plot-bps.plt
+gnuplot -e "direct='send'" plot-bps-wo-weave.plt
+gnuplot -e "direct='recv'" plot-bps-wo-weave.plt
 gnuplot -e "direct='send'" plot-bps-lo.plt
 gnuplot -e "direct='recv'" plot-bps-lo.plt
 gnuplot -e "direct='send'" plot-bps-current.plt
@@ -60,3 +62,5 @@ done
 
 gnuplot -e "direct='send'" plot-bps-flows.plt
 gnuplot -e "direct='recv'" plot-bps-flows.plt
+gnuplot -e "direct='send'" plot-bps-flows-wo-weave.plt
+gnuplot -e "direct='recv'" plot-bps-flows-wo-weave.plt

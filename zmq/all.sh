@@ -9,6 +9,7 @@ gnuplot plot-eachlat.plt
 gnuplot plot-eachlat-low.plt
 gnuplot plot-eachlat-high.plt
 
+gnuplot plot-eachlat-256.plt
 
 
 ./parser-eachthr.py output/graft-eachthr-msgsize_*	> dat/graft-eachthr.dat
@@ -20,6 +21,10 @@ gnuplot plot-eachlat-high.plt
 						> dat/nat-eachthr-reverse.dat
 
 
+
 gnuplot -e "rev='-reverse'" plot-eachthr-bps.plt
 gnuplot -e "rev='-reverse'" plot-eachthr-mps.plt
 gnuplot -e "rev='-reverse'" plot-eachthr-mps-high.plt
+
+gnuplot -e "rev='-reverse'" plot-eachthr-bps-256.plt
+gnuplot -e "rev='-reverse'" plot-eachthr-mps-256.plt

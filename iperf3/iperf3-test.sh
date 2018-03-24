@@ -34,7 +34,8 @@ function docker_run() {
 
 
 
-for p in 01 02 04 06 08 10 12 14 16 18 20; do
+#for p in 01 02 04 06 08 10 12 14 16 18 20; do
+for p in 01; do
 
 <<COMMENTOUT1
 #####################################################################
@@ -73,7 +74,6 @@ for x in `seq -w 1 $trynum`; do
 	docker_run "iperf3 -c $dst -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
 		> $outputdir/docker_nat_host_recv_parallel-"${p}"_"${x}".txt
 done
-COMMENTOUT1
 
 #####################################################################
 echo
@@ -95,7 +95,6 @@ for x in `seq -w 1 $trynum`; do
 		> $outputdir/docker_weave_docker_recv_parallel-"${p}"_"${x}".txt
 done
 
-<<COMMENTOUT2
 #####################################################################
 echo
 echo Testing Host. enable LRO on $nic
@@ -148,7 +147,44 @@ for x in `seq -w 1 $trynum`; do
 		> $outputdir/docker_nat_same-host_recv_parallel-"${p}"_"${x}".txt
 done
 
-COMMENTOUT2
+
+
+
+#####################################################################
+echo
+echo Testing Docker Container to Container via GRAFT
+
+for x in `seq -w 1 $trynum`; do
+	echo docker graft send to graft conintaer test parallel "${p}", $x
+	docker_run "iperf3 -c graft:$src -O 5 -t $duration -P ${p} -J" \
+		> $outputdir/docker_graft_graft-docker_send_parallel-"${p}"_"${x}".txt
+done
+
+for x in `seq -w 1 $trynum`; do
+	echo docker nat recv from same host test parallel "${p}", $x
+	docker_run "iperf3 -c graft:$src -O 5 -t $duration -P ${p} -R -J" \
+		> $outputdir/docker_graft_graft-docker_recv_parallel-"${p}"_"${x}".txt
+done
+
+COMMENTOUT1
+
+#####################################################################
+echo
+echo Testing Docker Container to Docker Container via Brdige
+
+for x in `seq -w 1 $trynum`; do
+	echo docker brdige send to same host docker test parallel "${p}", $x
+	docker_run "iperf3 -c $src -O 5 -t $duration -P ${p} -J" "-e GRAFT=disable" \
+		> $outputdir/docker_bridge_docker_send_parallel-"${p}"_"${x}".txt
+done
+
+for x in `seq -w 1 $trynum`; do
+	echo docker bridge recv from same host container test parallel "${p}", $x
+	docker_run "iperf3 -c $src -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
+		> $outputdir/docker_bridge_docker_recv_parallel-"${p}"_"${x}".txt
+done
+
+
 done
 
 

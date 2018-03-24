@@ -8,7 +8,7 @@ set xlabel "Number of Flows"
 set key bottom right
 
 set yrange [0:]
-set size ratio 0.355555
+set size ratio 0.4
 
 plot	"dat/multi-flow_host_none_host_".direct.".dat"	\
 	using 1:2 with lp title "Host",	\

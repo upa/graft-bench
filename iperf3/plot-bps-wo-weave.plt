@@ -5,7 +5,7 @@ set termoption noenhanced
 
 set grid ytic
 set ylabel "Throughput (Gbps)"
-set size ratio 0.9
+set size ratio 1
 
 set boxwidth 0.5
 set style fill solid 0.5

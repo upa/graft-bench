@@ -14,7 +14,7 @@
 
 ./parser.py GRAFT	docker_graft_same-host_send_parallel-01 \
 		> dat/single-flow-send-lo.dat
-./parser.py NAT		docker_nat_same-host_send_parallel-01 \
+./parser.py Bridge	docker_nat_same-host_send_parallel-01 \
 		>> dat/single-flow-send-lo.dat
 
 
@@ -31,7 +31,7 @@
 
 ./parser.py GRAFT	docker_graft_same-host_recv_parallel-01 \
 		> dat/single-flow-recv-lo.dat
-./parser.py NAT		docker_nat_same-host_recv_parallel-01 \
+./parser.py Bridge	docker_nat_same-host_recv_parallel-01 \
 		>> dat/single-flow-recv-lo.dat
 
 gnuplot -e "direct='send'" plot-bps.plt

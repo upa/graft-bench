@@ -15,8 +15,8 @@ duration=120
 dockercmd="mirror_thr tcp://0.0.0.0:5555"
 
 
-for msgsize in 64 128 256 512 1000 2000 4000 8000 16000 32000 64000 128000 1000000 2000000 4000000 8000000 16000000 32000000 64000000;
-do
+for msgsize in 64 128 256 512 1000 2000 4000 8000 16000 32000 64000 128000 256000; do
+
 	out="output/nat-eachthr-msgsize_${msgsize}.txt"
 
 	echo msgsize $msgsize, output $out

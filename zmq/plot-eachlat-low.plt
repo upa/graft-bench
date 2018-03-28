@@ -16,8 +16,8 @@ set key top left
 
 
 
-plot	"dat/nat-eachlat.dat" every 1::0::12 using 0:2:xtic(1) \
+plot	"dat/nat-eachlat.dat" every 1::0::8 using 0:2:xtic(1) \
 	with lp title "  NAT",	\
-	"dat/graft-eachlat.dat"	every 1::0::12 using 0:2 \
+	"dat/graft-eachlat.dat"	every 1::0::8 using 0:2 \
 	with lp title "  AF_GRAFT" 
 

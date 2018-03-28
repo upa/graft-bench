@@ -34,6 +34,18 @@
 ./parser.py Bridge	docker_nat_same-host_recv_parallel-01 \
 		>> dat/single-flow-recv-lo.dat
 
+./parser.py GRAFT	docker_graft_graft-docker_recv_parallel-01 \
+		> dat/single-flow-recv-c2c.dat
+./parser.py Bridge	docker_bridge_docker_recv_parallel \
+		>> dat/single-flow-recv-c2c.dat
+
+./parser.py GRAFT	docker_graft_graft-docker_send_parallel-01 \
+		> dat/single-flow-recv-c2c.dat
+./parser.py Bridge	docker_bridge_docker_send_parallel \
+		>> dat/single-flow-recv-c2c.dat
+
+
+
 gnuplot -e "direct='send'" plot-bps.plt
 gnuplot -e "direct='recv'" plot-bps.plt
 gnuplot -e "direct='send'" plot-bps-wo-weave.plt

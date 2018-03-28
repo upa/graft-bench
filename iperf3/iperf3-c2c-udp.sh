@@ -30,13 +30,18 @@ function docker_run() {
 
 for pktsize in 64 128 512 1024 1500; do
 
+#for x in `seq -w 1 $trynum`; do
+#	echo docker graft udp c2c test seq $x
+#	docker_run "iperf3 -c 127.0.0.1 -u -b 0 -l $pktsize -O 5 -t $duration -J"	\
+#		> $outputdir/docker_graft_c2c-udp_pktsize-${pktsize}_${x}.txt
+#done
+
 for x in `seq -w 1 $trynum`; do
-
-	echo docker graft udp c2c test seq $x
-	docker_run "iperf3 -c 127.0.0.1 -u -b 0 -l $pktsize -O 5 -t $duration -J"	\
-		> $outputdir/docker_graft_c2c-udp_pktsize-${pktsize}_${x}.txt
-
+	echo docker brdige udp c2c test seq $x
+	docker_run "GRAFT=disable iperf3 -c 172.17.0.4 -u -b 0 -l $pktsize -O 5 -t $duration -J"	\
+		> $outputdir/docker_bridge_c2c-udp_pktsize-${pktsize}_${x}.txt
 done
+
 
 done
 

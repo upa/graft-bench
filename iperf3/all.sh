@@ -40,9 +40,9 @@
 		>> dat/single-flow-recv-c2c.dat
 
 ./parser.py GRAFT	docker_graft_graft-docker_send_parallel-01 \
-		> dat/single-flow-recv-c2c.dat
-./parser.py Bridge	docker_bridge_docker_send_parallel \
-		>> dat/single-flow-recv-c2c.dat
+		> dat/single-flow-send-c2c.dat
+./parser.py Bridge	docker_bridge_l2_docker_send_parallel \
+		>> dat/single-flow-send-c2c.dat
 
 
 
@@ -56,6 +56,8 @@ gnuplot -e "direct='send'" plot-bps-current.plt
 gnuplot -e "direct='recv'" plot-bps-current.plt
 gnuplot -e "direct='send'" plot-bps-current-wo-weave.plt
 gnuplot -e "direct='recv'" plot-bps-current-wo-weave.plt
+gnuplot -e "direct='send'" plot-bps-c2c-tcp.plt
+gnuplot -e "direct='recv'" plot-bps-c2c-tcp.plt
 
 # gater multiple flows results
 for scheme in \
@@ -77,6 +79,8 @@ gnuplot -e "direct='recv'" plot-bps-flows.plt
 gnuplot -e "direct='send'" plot-bps-flows-wo-weave.plt
 gnuplot -e "direct='recv'" plot-bps-flows-wo-weave.plt
 
+gnuplot -e "direct='send'" plot-bps-c2c.plt
+gnuplot -e "direct='recv'" plot-bps-c2c.plt
 
 ./parser-udp.py 64 docker_graft_c2c-udp_pktsize-64 > dat/c2c-udp-graft.txt
 ./parser-udp.py 128 docker_graft_c2c-udp_pktsize-128 >> dat/c2c-udp-graft.txt

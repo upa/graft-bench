@@ -13,6 +13,6 @@ set key top left
 
 
 plot	"dat/c2c-udp-graft.txt"	\
-	using 0:2:xtic(1) with lp title "Bridge",	\
+	using 0:2:xtic(1) with lp title "GRAFT",	\
 	"dat/c2c-udp-bridge.txt"	\
-	using 0:2 with lp title "GRAFT"
+	using 0:2 with lp title "Bridge"

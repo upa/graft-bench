@@ -5,7 +5,7 @@ set termoption noenhanced
 set grid ytic
 set ylabel "Throughput (Gbps)"
 set xlabel "Message size (Byte)"
-set size ratio 0.35
+set size ratio 0.4
 set key top left
 
 set yrange [0:]

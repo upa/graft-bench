@@ -4,7 +4,7 @@ set termoption noenhanced
 
 set ylabel "Message per second (Mmps)"
 set xlabel "Message size (Byte)"
-set size ratio 0.35
+set size ratio 0.4
 set key top right
 
 

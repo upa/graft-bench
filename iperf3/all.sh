@@ -64,3 +64,20 @@ gnuplot -e "direct='send'" plot-bps-flows.plt
 gnuplot -e "direct='recv'" plot-bps-flows.plt
 gnuplot -e "direct='send'" plot-bps-flows-wo-weave.plt
 gnuplot -e "direct='recv'" plot-bps-flows-wo-weave.plt
+
+
+./parser-udp.py 64 docker_graft_c2c-udp_pktsize-64 > dat/c2c-udp-graft.txt
+./parser-udp.py 128 docker_graft_c2c-udp_pktsize-128 >> dat/c2c-udp-graft.txt
+./parser-udp.py 256 docker_graft_c2c-udp_pktsize-256 >> dat/c2c-udp-graft.txt
+./parser-udp.py 512 docker_graft_c2c-udp_pktsize-512 >> dat/c2c-udp-graft.txt
+./parser-udp.py 1024 docker_graft_c2c-udp_pktsize-1024 >> dat/c2c-udp-graft.txt
+./parser-udp.py 1500 docker_graft_c2c-udp_pktsize-1500 >> dat/c2c-udp-graft.txt
+
+./parser-udp.py 64 docker_bridge_c2c-udp_pktsize-64 > dat/c2c-udp-bridge.txt
+./parser-udp.py 128 docker_bridge_c2c-udp_pktsize-128 >> dat/c2c-udp-bridge.txt
+./parser-udp.py 256 docker_bridge_c2c-udp_pktsize-256 >> dat/c2c-udp-bridge.txt
+./parser-udp.py 512 docker_bridge_c2c-udp_pktsize-512 >> dat/c2c-udp-bridge.txt
+./parser-udp.py 1024 docker_bridge_c2c-udp_pktsize-1024 >> dat/c2c-udp-bridge.txt
+./parser-udp.py 1500 docker_bridge_c2c-udp_pktsize-1500 >> dat/c2c-udp-bridge.txt
+
+gnuplot plot-bps-c2c-udp.plt

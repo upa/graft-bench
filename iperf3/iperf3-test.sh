@@ -174,14 +174,14 @@ echo Testing Docker Container to Docker Container via Brdige
 
 for x in `seq -w 1 $trynum`; do
 	echo docker brdige send to same host docker test parallel "${p}", $x
-	docker_run "iperf3 -c $src -O 5 -t $duration -P ${p} -J" "-e GRAFT=disable" \
-		> $outputdir/docker_bridge_docker_send_parallel-"${p}"_"${x}".txt
+	docker_run "iperf3 -c 172.17.0.4 -O 5 -t $duration -P ${p} -J" "-e GRAFT=disable" \
+		> $outputdir/docker_bridge_l2_docker_send_parallel-"${p}"_"${x}".txt
 done
 
 for x in `seq -w 1 $trynum`; do
 	echo docker bridge recv from same host container test parallel "${p}", $x
-	docker_run "iperf3 -c $src -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
-		> $outputdir/docker_bridge_docker_recv_parallel-"${p}"_"${x}".txt
+	docker_run "iperf3 -c 172.17.0.4 -O 5 -t $duration -P ${p} -R -J" "-e GRAFT=disable" \
+		> $outputdir/docker_bridge_l2_docker_recv_parallel-"${p}"_"${x}".txt
 done
 
 

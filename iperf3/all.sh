@@ -79,6 +79,9 @@ gnuplot -e "direct='recv'" plot-bps-flows.plt
 gnuplot -e "direct='send'" plot-bps-flows-wo-weave.plt
 gnuplot -e "direct='recv'" plot-bps-flows-wo-weave.plt
 
+gnuplot -e "direct='send'" plot-bps-flows-wo-weave-sq.plt
+gnuplot -e "direct='recv'" plot-bps-flows-wo-weave-sq.plt
+
 gnuplot -e "direct='send'" plot-bps-c2c.plt
 gnuplot -e "direct='recv'" plot-bps-c2c.plt
 

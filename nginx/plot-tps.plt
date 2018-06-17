@@ -3,7 +3,7 @@ set output "graph/graph-nginx-siege-tps-conc-".conc.".pdf"
 
 set termoption noenhanced
 
-set ylabel "Transactions per second (ktps)"
+set ylabel "Transaction rate (Ktps)"
 set xlabel "File size (byte)"
 set size ratio 0.4
 

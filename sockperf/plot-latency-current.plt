@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 1
+set terminal pdf enhanced color fontscale 0.7
 set output "graph/graph-sockperf-".l4."-current.pdf"
 set termoption noenhanced
 

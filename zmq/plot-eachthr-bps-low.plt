@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 1.2
+set terminal pdf enhanced color fontscale 0.84
 set output "graph/graph-zmq-eachthr".rev."-bps-low.pdf"
 set termoption noenhanced
 #set bmargin 3.5

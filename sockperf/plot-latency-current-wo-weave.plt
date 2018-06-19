@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 1.2
+set terminal pdf enhanced color fontscale 0.84
 set output "graph/graph-sockperf-".l4."-current-wo-weave.pdf"
 set termoption noenhanced
 

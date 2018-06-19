@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 1
+set terminal pdf enhanced color fontscale 0.7
 set output "graph/graph-iperf3-1flow-".direct.".pdf"
 set termoption noenhanced
 

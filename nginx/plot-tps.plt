@@ -1,4 +1,4 @@
-set terminal pdfcairo enhanced color fontscale 1.1
+set terminal pdfcairo enhanced color fontscale 0.77
 set output "graph/graph-nginx-siege-tps-conc-".conc.".pdf"
 
 set termoption noenhanced

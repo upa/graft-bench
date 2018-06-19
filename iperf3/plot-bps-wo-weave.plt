@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 1.2
+set terminal pdf enhanced color fontscale 0.84
 set output "graph/graph-iperf3-1flow-".direct."-wo-weave.pdf"
 set termoption noenhanced
 

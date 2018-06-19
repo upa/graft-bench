@@ -1,4 +1,4 @@
-set terminal pdf enhanced color fontscale 1.2
+set terminal pdf enhanced color fontscale 0.84
 set termoption noenhanced
 set output "graph/graph-iperf3-c2c-udp.pdf"
 
